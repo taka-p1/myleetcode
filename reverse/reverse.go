@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	a := reverse(120)
+	a := reverse2(123)
 	fmt.Println(a)
 }
 
@@ -39,4 +39,16 @@ func pow(n int) int {
 	} else {
 		return 10 * pow(n-1)
 	}
+}
+
+func reverse2(x int) int {
+	var res int
+	for x != 0 {
+		res = res*10 + x%10
+		x = x / 10
+	}
+	if res > 2147483647 || res < -2147483648 {
+		res = 0
+	}
+	return res
 }
