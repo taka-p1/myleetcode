@@ -7,8 +7,9 @@ func main() {
 	fmt.Println(a)
 }
 
-func reverse(x int) (ans int) {
+func reverse(x int) int {
 	var nums []int
+	var ans int
 	tmp := x
 	if x < 0 {
 		x = -x
@@ -25,6 +26,9 @@ func reverse(x int) (ans int) {
 	}
 	if tmp < 0 {
 		ans = -ans
+	}
+	if ans > 2147483647 || ans < -2147483648 {
+		ans = 0
 	}
 	return ans
 }
