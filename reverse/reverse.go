@@ -1,16 +1,15 @@
 package main
 
-//still challenging...
 import "fmt"
 
 func main() {
-	a := reverse(123)
+	a := reverse(120)
 	fmt.Println(a)
 }
 
-func reverse(x int) (ans string) {
-	//var quotient int
+func reverse(x int) (ans int) {
 	var nums []int
+	tmp := x
 	if x < 0 {
 		x = -x
 	}
@@ -19,17 +18,21 @@ func reverse(x int) (ans string) {
 		nums = append(nums, remainder)
 		x = x / 10
 	}
-	//	for i, num := range {
-	//		ans :=
-	ans = fmt.Sprintf("%d", nums)
+	i := 0
+	for n := len(nums) - 1; n >= 0; n-- {
+		ans += nums[i] * pow(n)
+		i++
+	}
+	if tmp < 0 {
+		ans = -ans
+	}
 	return ans
 }
 
-func pow(n int) (m int) {
-	if n >= 1 {
-		m *= 10
-		n--
-		pow(n)
+func pow(n int) int {
+	if n == 0 {
+		return 1
+	} else {
+		return 10 * pow(n-1)
 	}
-	return m
 }
